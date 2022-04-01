@@ -289,7 +289,11 @@ pgadmin:
     - "5050:80"
 ```
 
-Затем `make up`
+В консоле
+
+```
+make up
+```
 
 pgAdmin доступен по адресу http://example.loc:5050
 
