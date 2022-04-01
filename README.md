@@ -315,24 +315,22 @@ pgAdmin доступен по адресу http://example.loc:5050
     ...
     'redis' => [
         'class' => 'yii\redis\Connection',
-        'hostname' => 'localhost',
-        'port' => 6379,
-        'database' => 0
-    ],
+        'hostname' => $_ENV['REDIS_HOST'],
+        'port' => $_ENV['REDIS_PORT'],
+        'database' => $_ENV['REDIS_DB']
+    ]
     ...
 ]
 ```
 
-Для проверки
+Проверим
 
 ```
 Yii::$app->redis->set('mykey', 'some value');
 echo Yii::$app->redis->get('mykey');
 ```
 
-Взято [здесь](https://www.yiiframework.com/extension/yiisoft/yii2-redis/doc/guide/2.0/ru/installation)
-
-В cli заходим так
+Командная строка
 
 ```
 docker exec -it example-redis redis-cli
@@ -340,7 +338,6 @@ docker exec -it example-redis redis-cli
 
 Возможное использование Redis: очереди, кэш, сессии  
 Подробнее [здесь](https://github.com/yiisoft/yii2-redis/tree/master/docs/guide-ru)  
-Список команд [здесь](https://redis.io/commands/)
 
 ## phpRedisAdmin
 
@@ -351,4 +348,3 @@ docker exec -it example-redis redis-cli
 * REDIS_1_AUTH - define password of the Redis server
 * ADMIN_USER - define username for user-facing Basic Auth
 * ADMIN_PASS - define password for user-facing Basic Auth
-
